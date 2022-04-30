@@ -12,3 +12,14 @@ reverse2 :: [a] -> [a]
 reverse2 list = if null list
                 then []
                 else reverse2 (tail list) +++ [head list]
+
+maxmin :: Ord a => [a] -> (a, a)
+maxmin list = if null (tail list)
+              then (head list, head list)
+              else ( if (head list) > fst (maxmin (tail list))
+                     then head list
+                     else fst (maxmin (tail list))
+                   , if (head list) < snd (maxmin (tail list))
+                     then head list
+                     else snd (maxmin (tail list))
+                   )
