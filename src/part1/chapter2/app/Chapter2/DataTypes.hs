@@ -10,3 +10,7 @@ data Person = Person String String Gender
 
 data Gender = Male | Female | Unknown
             deriving Show
+
+data TimeMachine = String Integer String Time Double
+
+data Time = Past | Future
