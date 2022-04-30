@@ -9,3 +9,4 @@ data Person = Person String String
             deriving Show
 
 data Gender = Male | Female | Unknown
+            deriving Show
