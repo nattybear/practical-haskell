@@ -14,3 +14,11 @@ data Gender = Male | Female | Unknown
 data TimeMachine = String Integer String Time Double
 
 data Time = Past | Future
+
+clientName :: Client -> String
+clientName client = case client of
+                      GovOrg name                 -> name
+                      Company name id person resp -> name
+                      Individual person ads       ->
+                        case person of
+                          Person fNm lNm gender -> fNm ++ " " ++ lNm
