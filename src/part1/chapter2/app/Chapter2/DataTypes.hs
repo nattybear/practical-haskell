@@ -7,3 +7,5 @@ data Client = GovOrg     String
 
 data Person = Person String String
             deriving Show
+
+data Gender = Male | Female | Unknown
