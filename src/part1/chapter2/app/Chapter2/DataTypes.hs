@@ -20,3 +20,7 @@ clientName client = case client of
                       GovOrg     name       -> name
                       Company    name _ _ _ -> name
                       Individual (Person fNm lNm _) _ -> fNm ++ " " ++ lNm
+
+companyName :: Client -> String
+companyName client = case client of
+                       Company name _ _ _ -> name
