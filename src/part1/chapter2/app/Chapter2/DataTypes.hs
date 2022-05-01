@@ -104,3 +104,8 @@ data ClientR = GovOrgR  { clientRName :: String }
 data PersonR = PersonR { firstName :: String
                        , lastName :: String
                        } deriving Show
+
+greet :: ClientR -> String
+greet IndividualR { person = PersonR { firstName = fn } } = "Hi, " ++ fn
+greet CompanyR    { clientRName = c } = "Hi, " ++ c
+greet GovOrgR     { }                 = "Welcome"
