@@ -2,6 +2,8 @@
 {-# LANGUAGE RecordWildCards #-}
 module Chapter2.DataTypes where
 
+import Data.Char
+
 data Client = GovOrg     String
             | Company    String Integer String String
             | Individual Person Bool
@@ -110,3 +112,9 @@ greet :: ClientR -> String
 greet IndividualR { person = PersonR { .. } } = "Hi, " ++ firstName
 greet CompanyR    { .. }                      = "Hi, " ++ clientRName
 greet GovOrgR     { }                         = "Welcome"
+
+nameInCapitals :: PersonR -> PersonR
+nameInCapitals p@(PersonR { firstName = initial:rest }) =
+  let newName = (toUpper initial):rest
+  in  p { firstName = newName }
+nameInCapitals p@(PersonR { firstName = "" }) = p
