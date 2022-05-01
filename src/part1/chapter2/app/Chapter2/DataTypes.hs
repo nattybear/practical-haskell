@@ -1,3 +1,4 @@
+{-# LANGUAGE ViewPatterns #-}
 module Chapter2.DataTypes where
 
 data Client = GovOrg     String
@@ -86,3 +87,8 @@ unzip' xs = (ys, zs)
 responsibility :: Client -> String
 responsibility (Company _ _ _ r) = r
 responsibility _                 = "Unknown"
+
+specialClient :: Client -> Bool
+specialClient (clientName -> "Mr. Alejandro") = True
+specialClient (responsibility -> "Director")  = True
+specialClient _                               = False
