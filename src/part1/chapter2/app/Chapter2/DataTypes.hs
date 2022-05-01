@@ -15,16 +15,15 @@ data Person = Person String String Gender
 data Gender = Male | Female | Unknown
             deriving Show
 
--- Time machines are defined by
--- their manufacturer,
--- their model (which is an integer),
--- their name,
--- whether they can travel to the past and to the future,
--- and a price
--- (which can be represented as a floating-point number)
-data TimeMachine = TimeMachine String Integer String Time Double
+data TimeMachine = TimeMachine { manufacturer :: String
+                               , model :: Integer
+                               , name :: String
+                               , time :: Time
+                               , price :: Double
+                               } deriving Show
 
 data Time = Past | Future
+          deriving Show
 
 clientName :: Client -> String
 clientName (GovOrg name)                     = name
@@ -45,8 +44,7 @@ numberOfClient (Individual (Person _ _ gender) _) =
   Just (NumberOfClient gender 1)
 
 discount :: Double -> TimeMachine -> TimeMachine
-discount percent (TimeMachine manufacturer model name time price) =
-  TimeMachine manufacturer model name time newPrice
+discount percent t@(TimeMachine { .. })= t { price = newPrice }
   where newPrice = price * (1 - percent)
 
 discounts :: Double -> [TimeMachine] -> [TimeMachine]
