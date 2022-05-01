@@ -57,3 +57,7 @@ ifibonacci n = if n < 0
                       n' -> let Just f1 = ifibonacci (n'-1)
                                 Just f2 = ifibonacci (n'-2)
                             in Just (f1 + f2)
+
+binom _ 0 = 1
+binom x x = 1
+binom n k = (binom (n-1) (k-1)) + (binom (n-1) k)
