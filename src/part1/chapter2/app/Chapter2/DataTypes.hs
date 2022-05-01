@@ -75,3 +75,10 @@ ackermann m n
   | m == 0 = n + 1
   | m > 0 && n == 0 = ackermann (m-1) 1
   | m > 0 && n > 0  = ackermann (m-1) (ackermann m (n-1))
+
+unzip' :: [(a, b)] -> ([a], [b])
+unzip' xs = (ys, zs)
+  where foo ((x,_):zs) = x : foo zs
+        bar ((_,y):zs) = y : bar zs
+        ys = foo xs
+        zs = bar xs
