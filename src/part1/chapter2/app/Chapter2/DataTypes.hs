@@ -82,3 +82,7 @@ unzip' xs = (ys, zs)
         bar ((_,y):zs) = y : bar zs
         ys = foo xs
         zs = bar xs
+
+responsibility :: Client -> String
+responsibility (Company _ _ _ r) = r
+responsibility _                 = "Unknown"
