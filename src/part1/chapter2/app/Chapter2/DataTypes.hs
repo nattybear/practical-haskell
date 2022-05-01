@@ -23,3 +23,12 @@ clientName (Individual (Person fNm lNm _) _) = fNm ++ " " ++ lNm
 companyName :: Client -> Maybe String
 companyName (Company name _ _ _) = Just name
 companyName _                    = Nothing
+
+data NumberOfClient = NumberOfClient Gender Int
+                    deriving Show
+
+numberOfClient :: Client -> Maybe NumberOfClient
+numberOfClient (GovOrg _)                         = Nothing
+numberOfClient (Company _ _ _ _)                  = Nothing
+numberOfClient (Individual (Person _ _ gender) _) =
+  Just (NumberOfClient gender 1)
