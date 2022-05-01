@@ -1,5 +1,5 @@
 {-# LANGUAGE ViewPatterns #-}
-{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE RecordWildCards #-}
 module Chapter2.DataTypes where
 
 data Client = GovOrg     String
@@ -107,6 +107,6 @@ data PersonR = PersonR { firstName :: String
                        } deriving Show
 
 greet :: ClientR -> String
-greet IndividualR { person = PersonR { firstName } } = "Hi, " ++ firstName
-greet CompanyR    { clientRName } = "Hi, " ++ clientRName
-greet GovOrgR     { }                 = "Welcome"
+greet IndividualR { person = PersonR { .. } } = "Hi, " ++ firstName
+greet CompanyR    { .. }                      = "Hi, " ++ clientRName
+greet GovOrgR     { }                         = "Welcome"
