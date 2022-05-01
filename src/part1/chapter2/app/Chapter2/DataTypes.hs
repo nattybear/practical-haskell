@@ -19,6 +19,4 @@ clientName :: Client -> String
 clientName client = case client of
                       GovOrg     name       -> name
                       Company    name _ _ _ -> name
-                      Individual person ads ->
-                        case person of
-                          Person fNm lNm gender -> fNm ++ " " ++ lNm
+                      Individual (Person fNm lNm _) _ -> fNm ++ " " ++ lNm
