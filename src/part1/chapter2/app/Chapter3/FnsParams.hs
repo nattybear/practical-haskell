@@ -11,3 +11,6 @@ sayHello :: [String] -> [String]
 sayHello names = map (\case "Alejandro" -> "Hello, writer"
                             name        -> "Welcome, " ++ name
                      ) names
+
+multiplyByN :: Integer -> (Integer -> Integer)
+multiplyByN n = \x -> n*x
