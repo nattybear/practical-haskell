@@ -29,6 +29,7 @@ executable chapter2
     other-modules:    Chapter2.Section2.Example
                     , Chapter2.DataTypes
                     , Chapter2.DefaultValues
+                    , Chapter3.ParamPoly
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
