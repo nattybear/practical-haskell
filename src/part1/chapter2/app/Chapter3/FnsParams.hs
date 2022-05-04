@@ -1,3 +1,4 @@
+{-# LANGUAGE LambdaCase #-}
 module Chapter3.FnsParams where
 
 apply3f2 :: (Integer -> Integer) -> Integer -> Integer
@@ -7,7 +8,6 @@ equalTuples :: [(Integer,Integer)] -> [Bool]
 equalTuples t = map (\(x,y) -> x == y) t
 
 sayHello :: [String] -> [String]
-sayHello names = map (\name -> case name of
-                                 "Alejandro" -> "Hello, writer"
-                                 _           -> "Welcome, " ++ name
+sayHello names = map (\case "Alejandro" -> "Hello, writer"
+                            name        -> "Welcome, " ++ name
                      ) names
