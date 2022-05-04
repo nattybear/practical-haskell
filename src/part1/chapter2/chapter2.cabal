@@ -30,6 +30,7 @@ executable chapter2
                     , Chapter2.DataTypes
                     , Chapter2.DefaultValues
                     , Chapter3.ParamPoly
+                    , Chapter3.FnsParams
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
