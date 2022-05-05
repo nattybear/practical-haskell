@@ -1,4 +1,4 @@
-module Chapter3.Ranges where
+module Chapter3.Ranges (Range(), range)where
 
 data Range = Range Integer Integer deriving Show
 
