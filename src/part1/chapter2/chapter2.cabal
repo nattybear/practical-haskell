@@ -32,6 +32,7 @@ executable chapter2
                     , Chapter3.ParamPoly
                     , Chapter3.FnsParams
                     , Chapter3.MoreModules
+                    , Chapter3.Ranges
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
