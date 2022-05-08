@@ -1,3 +1,4 @@
+{-# LANGUAGE LambdaCase #-}
 module Chapter3.Lists where
 
 import Chapter2.DataTypes
@@ -32,3 +33,7 @@ minimumBy g = foldr1 (\x y -> if g x < g y then x else y)
 
 bothFilters :: (a -> Bool) -> [a] -> ([a],[a])
 bothFilters p list = (filter p list, filter (not . p) list)
+
+skipUntilGov :: [Client] -> [Client]
+skipUntilGov = dropWhile (\case GovOrg {} -> False
+                                _         -> True)
