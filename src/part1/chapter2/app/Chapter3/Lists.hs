@@ -23,3 +23,7 @@ product' = foldr (*) 1
 minimumClient :: [Client] -> Client
 minimumClient = foldr1 (\x y -> if f x < f y then x else y)
   where f = length . clientName
+
+all' :: [Bool] -> Bool
+all' []     = True
+all' (x:xs) = x && all' xs
