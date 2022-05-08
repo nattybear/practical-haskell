@@ -21,8 +21,5 @@ product' :: [Integer] -> Integer
 product' = foldr (*) 1
 
 minimumClient :: [Client] -> Client
-minimumClient [x]      = x
-minimumClient (x:y:xs) = if f x < f y
-                         then minimumClient (x:xs)
-                         else minimumClient (y:xs)
+minimumClient = foldr1 (\x y -> if f x < f y then x else y)
   where f = length . clientName
