@@ -11,3 +11,6 @@ infMax x             MinusInfinity = x
 infMax PlusInfinity  _             = PlusInfinity
 infMax _             PlusInfinity  = PlusInfinity
 infMax (Number a)    (Number b)    = Number (max a b)
+
+maximum' :: [Integer] -> Integer
+maximum' = foldr1 max
