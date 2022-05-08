@@ -26,3 +26,6 @@ minimumClient = foldr1 (\x y -> if f x < f y then x else y)
 
 all' :: [Bool] -> Bool
 all' = foldr (&&) True
+
+minimumBy :: Ord b => (a -> b) -> [a] -> a
+minimumBy g = foldr1 (\x y -> if g x < g y then x else y) 
