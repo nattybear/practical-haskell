@@ -1,5 +1,7 @@
 module Chapter3.Lists where
 
+import Chapter2.DataTypes
+
 data InfNumber a = MinusInfinity
                  | Number a
                  | PlusInfinity
@@ -17,3 +19,10 @@ maximum' = foldr1 max
 
 product' :: [Integer] -> Integer
 product' = foldr (*) 1
+
+minimumClient :: [Client] -> Client
+minimumClient [x]      = x
+minimumClient (x:y:xs) = if f x < f y
+                         then minimumClient (x:xs)
+                         else minimumClient (y:xs)
+  where f = length . clientName
