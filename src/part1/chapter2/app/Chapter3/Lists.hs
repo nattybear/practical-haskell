@@ -38,3 +38,10 @@ bothFilters p list = (filter p list, filter (not . p) list)
 skipUntilGov :: [Chapter3.ParamPoly.Client a] -> [Chapter3.ParamPoly.Client a]
 skipUntilGov = dropWhile (\case Chapter3.ParamPoly.GovOrg {} -> False
                                 _                            -> True)
+
+isIndividual :: Chapter3.ParamPoly.Client a -> Bool
+isIndividual (Chapter3.ParamPoly.Individual {}) = True
+isIndividual _                                  = False
+
+checkAnalytics :: [Chapter3.ParamPoly.Client a] -> (Bool, Bool)
+checkAnalytics cs = (any isIndividual cs, not $ all isIndividual cs)
