@@ -2,6 +2,7 @@
 module Chapter3.Lists where
 
 import Chapter2.DataTypes
+import Chapter3.ParamPoly
 
 data InfNumber a = MinusInfinity
                  | Number a
@@ -21,9 +22,9 @@ maximum' = foldr1 max
 product' :: [Integer] -> Integer
 product' = foldr (*) 1
 
-minimumClient :: [Client] -> Client
+minimumClient :: [Chapter2.DataTypes.Client] -> Chapter2.DataTypes.Client
 minimumClient = foldr1 (\x y -> if f x < f y then x else y)
-  where f = length . clientName
+  where f = length . Chapter2.DataTypes.clientName
 
 all' :: [Bool] -> Bool
 all' = foldr (&&) True
@@ -34,6 +35,6 @@ minimumBy g = foldr1 (\x y -> if g x < g y then x else y)
 bothFilters :: (a -> Bool) -> [a] -> ([a],[a])
 bothFilters p list = (filter p list, filter (not . p) list)
 
-skipUntilGov :: [Client] -> [Client]
-skipUntilGov = dropWhile (\case GovOrg {} -> False
-                                _         -> True)
+skipUntilGov :: [Chapter3.ParamPoly.Client a] -> [Chapter3.ParamPoly.Client a]
+skipUntilGov = dropWhile (\case Chapter3.ParamPoly.GovOrg {} -> False
+                                _                            -> True)
