@@ -16,5 +16,4 @@ maximum' :: [Integer] -> Integer
 maximum' = foldr1 max
 
 product' :: [Integer] -> Integer
-product' []     = 1
-product' (x:xs) = x * product' xs
+product' = foldr (*) 1
