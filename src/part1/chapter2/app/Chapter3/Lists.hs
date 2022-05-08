@@ -29,3 +29,6 @@ all' = foldr (&&) True
 
 minimumBy :: Ord b => (a -> b) -> [a] -> a
 minimumBy g = foldr1 (\x y -> if g x < g y then x else y) 
+
+bothFilters :: (a -> Bool) -> [a] -> ([a],[a])
+bothFilters p list = (filter p list, filter (not . p) list)
