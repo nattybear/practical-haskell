@@ -3,6 +3,7 @@ module Chapter3.Lists where
 
 -- import Chapter2.DataTypes
 import Chapter3.ParamPoly
+import Data.Function
 import Data.List
 
 data InfNumber a = MinusInfinity
@@ -69,8 +70,8 @@ listOfClients
 
 companyDutiesAnalytics :: [Client a] -> [String]
 companyDutiesAnalytics = map (duty . head) .
-                           sortBy (\x y -> compare (length y) (length x)) .
-                           groupBy (\x y -> duty x == duty y) .
+                           sortBy (flip (compare `on` length)) .
+                           groupBy ((==) `on` duty) .
                            filter isCompany
   where isCompany (Company {}) = True
         isCompany _            = False
