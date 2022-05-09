@@ -3,6 +3,7 @@ module Chapter3.Lists where
 
 import Chapter2.DataTypes
 import Chapter3.ParamPoly
+import Data.List
 
 data InfNumber a = MinusInfinity
                  | Number a
@@ -45,3 +46,8 @@ isIndividual _                                  = False
 
 checkAnalytics :: [Chapter3.ParamPoly.Client a] -> (Bool, Bool)
 checkAnalytics cs = (any isIndividual cs, not $ all isIndividual cs)
+
+elem' :: Eq a => a -> [a] -> Bool
+elem' x xs = case find (==x) xs of
+               Just x' -> True
+               Nothing -> False
