@@ -1,7 +1,7 @@
 {-# LANGUAGE LambdaCase #-}
 module Chapter3.Lists where
 
-import Chapter2.DataTypes
+-- import Chapter2.DataTypes
 import Chapter3.ParamPoly
 import Data.List
 
@@ -23,9 +23,9 @@ maximum' = foldr1 max
 product' :: [Integer] -> Integer
 product' = foldr (*) 1
 
-minimumClient :: [Chapter2.DataTypes.Client] -> Chapter2.DataTypes.Client
-minimumClient = foldr1 (\x y -> if f x < f y then x else y)
-  where f = length . Chapter2.DataTypes.clientName
+-- minimumClient :: [Client] -> Client
+-- minimumClient = foldr1 (\x y -> if f x < f y then x else y)
+--   where f = length . clientName
 
 all' :: [Bool] -> Bool
 all' = foldr (&&) True
@@ -36,15 +36,15 @@ minimumBy g = foldr1 (\x y -> if g x < g y then x else y)
 bothFilters :: (a -> Bool) -> [a] -> ([a],[a])
 bothFilters p list = (filter p list, filter (not . p) list)
 
-skipUntilGov :: [Chapter3.ParamPoly.Client a] -> [Chapter3.ParamPoly.Client a]
-skipUntilGov = dropWhile (\case Chapter3.ParamPoly.GovOrg {} -> False
-                                _                            -> True)
+skipUntilGov :: [Client a] -> [Client a]
+skipUntilGov = dropWhile (\case GovOrg {} -> False
+                                _         -> True)
 
-isIndividual :: Chapter3.ParamPoly.Client a -> Bool
-isIndividual (Chapter3.ParamPoly.Individual {}) = True
-isIndividual _                                  = False
+isIndividual :: Client a -> Bool
+isIndividual (Individual {}) = True
+isIndividual _               = False
 
-checkAnalytics :: [Chapter3.ParamPoly.Client a] -> (Bool, Bool)
+checkAnalytics :: [Client a] -> (Bool, Bool)
 checkAnalytics cs = (any isIndividual cs, not $ all isIndividual cs)
 
 elem' :: Eq a => a -> [a] -> Bool
