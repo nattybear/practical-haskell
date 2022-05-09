@@ -66,3 +66,11 @@ listOfClients
     , Individual 5 (Person "Doctor" "")
     , Individual 6 (Person "Sarah" "Jane")
     ]
+
+companyDutiesAnalytics :: [Client a] -> [String]
+companyDutiesAnalytics = map (duty . head) .
+                           sortBy (\x y -> compare (length y) (length x)) .
+                           groupBy (\x y -> duty x == duty y) .
+                           filter isCompany
+  where isCompany (Company {}) = True
+        isCompany _            = False
