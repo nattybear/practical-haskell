@@ -35,6 +35,7 @@ executable chapter2
                     , Chapter3.Ranges
                     , Chapter3.Lists
                     , Chapter3.Compr
+                    , Chapter3.Origami
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
