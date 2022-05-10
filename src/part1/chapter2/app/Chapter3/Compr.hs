@@ -1,5 +1,8 @@
 module Chapter3.Compr where
 
+import Chapter3.Lists
+import Chapter3.ParamPoly
+
 enum :: Int -> Int -> [Int]
 enum a b | a > b = []
 enum a b         = a : enum (a+1) b
