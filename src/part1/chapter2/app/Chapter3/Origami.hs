@@ -1,7 +1,14 @@
 module Chapter3.Origami where
 
+import Data.List
+
 filterAsFold :: (a -> Bool) -> [a] -> [a]
 filterAsFold p = foldr (\x l -> if p x then x : l else l) []
 
 mapAsFold :: (a -> b) -> [a] -> [b]
 mapAsFold f = foldr (\x l -> f x : l) []
+
+enumUnfold :: Int -> Int -> [Int]
+enumUnfold n m = unfoldr (\x -> if x > m
+                                then Nothing
+                                else Just (x, x+1)) n
