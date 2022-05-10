@@ -29,6 +29,13 @@ executable chapter2
     other-modules:    Chapter2.Section2.Example
                     , Chapter2.DataTypes
                     , Chapter2.DefaultValues
+                    , Chapter3.ParamPoly
+                    , Chapter3.FnsParams
+                    , Chapter3.MoreModules
+                    , Chapter3.Ranges
+                    , Chapter3.Lists
+                    , Chapter3.Compr
+                    , Chapter3.Origami
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
