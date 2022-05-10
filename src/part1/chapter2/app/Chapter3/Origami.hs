@@ -1,3 +1,5 @@
+{-# LANGUAGE LambdaCase #-}
+
 module Chapter3.Origami where
 
 import Data.List
@@ -12,3 +14,7 @@ enumUnfold :: Int -> Int -> [Int]
 enumUnfold n m = unfoldr (\x -> if x > m
                                 then Nothing
                                 else Just (x, x+1)) n
+
+minSort :: [Integer] -> [Integer]
+minSort = unfoldr (\case [] -> Nothing
+                         xs -> Just (m, delete m xs) where m = minimum xs)
