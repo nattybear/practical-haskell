@@ -34,6 +34,7 @@ executable chapter2
                     , Chapter3.MoreModules
                     , Chapter3.Ranges
                     , Chapter3.Lists
+                    , Chapter3.Compr
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
