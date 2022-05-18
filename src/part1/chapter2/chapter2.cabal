@@ -39,6 +39,6 @@ executable chapter2
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.12.0.0
+    build-depends:    base >= 4.12.0.0
     hs-source-dirs:   app
     default-language: Haskell2010
