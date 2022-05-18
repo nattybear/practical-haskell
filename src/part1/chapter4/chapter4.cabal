@@ -1,9 +1,10 @@
 name:          chapter4
 version:       0.1
-cabal-version: >=1.2
+cabal-version: >= 1.2
 build-type:    Simple
 
 library
   hs-source-dirs: src
   build-depends:  base >= 4
                 , containers >= 0.6.0.1 && < 0.7
+  other-modules:  Chapter4.Containers
