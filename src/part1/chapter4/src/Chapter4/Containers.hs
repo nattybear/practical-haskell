@@ -4,6 +4,7 @@
 module Chapter4.Containers where
 
 import           Chapter3.ParamPoly
+import           Data.Graph
 import qualified Data.Map           as M
 import qualified Data.Set           as S
 import           Data.Tree
@@ -45,3 +46,13 @@ pictureTree = Node 1 [ Node 2 [ Node 3 []
                               , Node 4 []
                               , Node 5 [] ]
                               , Node 6 [] ]
+
+timeMachineGraph :: [(String, String, [String])]
+timeMachineGraph =
+  [("wood","wood",["walls"])
+  ,("plastic","plastic",["walls","wheels"])
+  ,("aluminum","luminum",["wheels","door"])
+  ,("walls","walls",["done"])
+  ,("wheels","wheels",["done"])
+  ,("door","door",["done"])
+  ,("done","done",[])]
