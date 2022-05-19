@@ -39,3 +39,9 @@ preOrder :: (a -> b) -> Tree a -> [b]
 preOrder f (Node v subtrees)
   = let subtreesTraversed = concat $ map (preOrder f) subtrees
     in f v : subtreesTraversed
+
+pictureTree :: Tree Int
+pictureTree = Node 1 [ Node 2 [ Node 3 []
+                              , Node 4 []
+                              , Node 5 [] ]
+                              , Node 6 [] ]
