@@ -6,6 +6,7 @@ module Chapter4.Containers where
 import           Chapter3.ParamPoly
 import qualified Data.Map           as M
 import qualified Data.Set           as S
+import           Data.Tree
 
 insert :: Ord k => k -> a -> M.Map k a -> M.Map k a
 insert k v = M.alter (\_ -> Just v) k
@@ -33,3 +34,8 @@ classifyClients clients = M.fromList [ (GovOrgKind,     S.fromList xs)
             Company    { .. } -> go cs (xs, c:ys, zs)
             Individual { .. } -> go cs (xs, ys, c:zs)
         (xs, ys, zs) = go clients ([], [], [])
+
+preOrder :: (a -> b) -> Tree a -> [b]
+preOrder f (Node v subtrees)
+  = let subtreesTraversed = concat $ map (preOrder f) subtrees
+    in f v : subtreesTraversed
