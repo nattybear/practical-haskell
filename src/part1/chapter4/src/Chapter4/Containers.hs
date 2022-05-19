@@ -56,3 +56,8 @@ timeMachineGraph =
   ,("wheels","wheels",["done"])
   ,("door","door",["done"])
   ,("done","done",[])]
+
+timeMachinePrecedence :: ( Graph
+                         , Vertex -> (String,String,[String])
+                         , String -> Maybe Vertex)
+timeMachinePrecedence = graphFromEdges timeMachineGraph
