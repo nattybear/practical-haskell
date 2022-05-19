@@ -24,13 +24,12 @@ data ClientKind = GovOrgKind
 
 classifyClients :: [Client Integer]
                 -> M.Map ClientKind (S.Set (Client Integer))
-classifyClients clients = go clients m'
-  where go (x:xs) m =
-          case x of
-            GovOrg     { .. } -> M.adjust (S.insert x) GovOrgKind     m
-            Company    { .. } -> M.adjust (S.insert x) CompanyKind    m
-            Individual { .. } -> M.adjust (S.insert x) IndividualKind m
-        m' = M.fromList [ (GovOrgKind,     s)
-                        , (CompanyKind,    s)
-                        , (IndividualKind, s) ]
-        s  = S.empty
+classifyClients clients = M.fromList [ (GovOrgKind,     S.fromList xs)
+                                     , (CompanyKind,    S.fromList ys)
+                                     , (IndividualKind, S.fromList zs) ]
+  where go (c:cs) (xs, ys, zs) =
+          case c of
+            GovOrg     { .. } -> go cs (c:xs, ys, zs)
+            Company    { .. } -> go cs (xs, c:ys, zs)
+            Individual { .. } -> go cs (xs, ys, c:zs)
+        (xs, ys, zs) = go clients ([], [], [])
