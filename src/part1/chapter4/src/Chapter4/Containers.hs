@@ -1,11 +1,11 @@
-{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE LambdaCase      #-}
 {-# LANGUAGE RecordWildCards #-}
 
 module Chapter4.Containers where
 
-import Chapter3.ParamPoly
-import qualified Data.Map as M
-import qualified Data.Set as S
+import           Chapter3.ParamPoly
+import qualified Data.Map           as M
+import qualified Data.Set           as S
 
 insert :: Ord k => k -> a -> M.Map k a -> M.Map k a
 insert k v = M.alter (\_ -> Just v) k
