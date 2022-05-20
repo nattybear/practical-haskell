@@ -61,3 +61,8 @@ timeMachinePrecedence :: ( Graph
                          , Vertex -> (String,String,[String])
                          , String -> Maybe Vertex)
 timeMachinePrecedence = graphFromEdges timeMachineGraph
+
+timeMachineTravel :: Graph
+timeMachineTravel = buildG (103,2013)
+  [(1302,1614),(1614,1302),(1302,2013),(2013,1302),(1614,2013)
+  ,(2013,1408),(1408,1993),(1408,917),(1993,917),(917,103),(103,917)]
