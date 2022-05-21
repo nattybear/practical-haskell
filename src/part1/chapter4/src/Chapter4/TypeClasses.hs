@@ -1,6 +1,6 @@
 module Chapter4.TypeClasses where
 
-import qualified Chapter2.DataTypes as T (TimeMachine (..))
+import qualified Chapter2.DataTypes as T
 import           Chapter3.ParamPoly
 
 class Nameable n where
