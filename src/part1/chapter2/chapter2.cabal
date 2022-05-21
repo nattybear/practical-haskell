@@ -7,8 +7,8 @@ extra-source-files: CHANGELOG.md
 
 library
     exposed-modules:  Chapter3.ParamPoly
-    other-modules:    Chapter2.Section2.Example
                     , Chapter2.DataTypes
+    other-modules:    Chapter2.Section2.Example
                     , Chapter2.DefaultValues
                     , Chapter3.FnsParams
                     , Chapter3.MoreModules
