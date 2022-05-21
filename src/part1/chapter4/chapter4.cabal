@@ -9,3 +9,4 @@ library
                 , containers >= 0.6.0.1 && < 0.7
                 , chapter2
   other-modules:  Chapter4.Containers
+                , Chapter4.TypeClasses
