@@ -10,7 +10,7 @@ data Client i = GovOrg  { clientId :: i, clientName :: String }
               deriving (Show, Eq, Ord)
 
 data Person = Person { firstName :: String, lastName :: String }
-              deriving (Show, Eq, Ord)
+              deriving (Show, Eq, Ord, Read)
 
 swapTriple (x,y,z) = (y,z,x)
 
