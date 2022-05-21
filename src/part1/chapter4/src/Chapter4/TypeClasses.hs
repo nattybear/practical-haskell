@@ -1,7 +1,7 @@
 module Chapter4.TypeClasses where
 
-import Chapter2.DataTypes (TimeMachine)
-import Chapter3.ParamPoly
+import qualified Chapter2.DataTypes as T (TimeMachine (..))
+import           Chapter3.ParamPoly
 
 class Nameable n where
   name :: n -> String
@@ -15,4 +15,10 @@ instance Nameable (Client i) where
   name c = clientName c
 
 class Priceable p where
-  totalPrice :: [p] -> Double
+  price :: p -> Double
+
+instance Priceable T.TimeMachine where
+  price = T.price
+
+totalPrice :: Priceable p => [p] -> Double
+totalPrice = sum . map price
