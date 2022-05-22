@@ -80,3 +80,12 @@ treeInsert4 v c Leaf3 = Node3 v c Leaf3 Leaf3
 cached :: Monoid c => BinaryTree3 v c -> c
 cached (Node3 _ c _ _) = c
 cached Leaf3           = mempty
+
+newtype Min = Min Double deriving Show
+
+instance Semigroup Min where
+  Min x <> Min y = Min $ min x y
+
+instance Monoid Min where
+  mempty  = Min infinity where infinity = 1/0
+  mappend = (<>)
