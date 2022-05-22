@@ -1,6 +1,7 @@
 module Chapter4.MinimumPrice where
 
-import qualified Data.Map as M
+import qualified Data.Map  as M
+import qualified Data.Tree as T
 
 data TravelGuide = TravelGuide { title   :: String
                                , authors :: [String]
@@ -98,3 +99,7 @@ modifyTravelGuidePrice m = map (\tg -> tg { price = m * price tg })
 modifyTravelGuidePriceMap
   :: Double -> M.Map a TravelGuide -> M.Map a TravelGuide
 modifyTravelGuidePriceMap m = M.map (\tg -> tg { price = m * price tg })
+
+modifyTravelGuidePriceTree
+  :: Double -> T.Tree TravelGuide -> T.Tree TravelGuide
+modifyTravelGuidePriceTree m = fmap (\tg -> tg { price = m * price tg })
