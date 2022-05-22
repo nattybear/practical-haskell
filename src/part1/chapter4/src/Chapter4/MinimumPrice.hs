@@ -50,3 +50,7 @@ newtype TGByPrice = TGByPrice TravelGuide deriving Eq
 instance Ord TGByPrice where
   (TGByPrice (TravelGuide t1 a1 p1)) <= (TGByPrice (TravelGuide t2 a2 p2)) =
     p1 < p2 || (p1 == p2 && (t1 < t2 || (t1 == t2 && a1 <= a2)))
+
+data BinaryTree3 v c = Node3 v c (BinaryTree3 v c) (BinaryTree3 v c)
+                     | Leaf3
+                     deriving (Show, Eq, Ord)
