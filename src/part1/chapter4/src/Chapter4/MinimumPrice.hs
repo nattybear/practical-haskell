@@ -107,3 +107,9 @@ modifyTravelGuidePriceTree m = fmap (\tg -> tg { price = m * price tg })
 modifyTravelGuidePrice'
   :: Functor f => Double -> f TravelGuide -> f TravelGuide
 modifyTravelGuidePrice' m = fmap (\tg -> tg { price = m * price tg })
+
+newtype Maybe' a = Maybe' (Maybe a) deriving Show
+
+instance Functor Maybe' where
+  fmap _ (Maybe' Nothing)  = Maybe' Nothing
+  fmap f (Maybe' (Just x)) = Maybe' (Just $ f x)
