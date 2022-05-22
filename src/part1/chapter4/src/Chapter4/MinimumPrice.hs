@@ -103,3 +103,7 @@ modifyTravelGuidePriceMap m = M.map (\tg -> tg { price = m * price tg })
 modifyTravelGuidePriceTree
   :: Double -> T.Tree TravelGuide -> T.Tree TravelGuide
 modifyTravelGuidePriceTree m = fmap (\tg -> tg { price = m * price tg })
+
+modifyTravelGuidePrice'
+  :: Functor f => Double -> f TravelGuide -> f TravelGuide
+modifyTravelGuidePrice' m = fmap (\tg -> tg { price = m * price tg })
