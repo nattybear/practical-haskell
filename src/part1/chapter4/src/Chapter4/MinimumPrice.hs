@@ -54,3 +54,12 @@ instance Ord TGByPrice where
 data BinaryTree3 v c = Node3 v c (BinaryTree3 v c) (BinaryTree3 v c)
                      | Leaf3
                      deriving (Show, Eq, Ord)
+
+treeInsert3 :: (Ord v, Ord c)
+            => v -> c -> BinaryTree3 v c -> BinaryTree3 v c
+treeInsert3 v c (Node3 v2 c2 l r)
+  = case compare v v2 of
+      EQ -> Node3 v2 c2 l r
+      LT -> Node3 v2 (min c c2) (treeInsert3 v c l) r
+      GT -> Node3 v2 (min c c2) l (treeInsert3 v c r)
+treeInsert3 v c Leaf3 = Node3 v c Leaf3 Leaf3
