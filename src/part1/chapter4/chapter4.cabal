@@ -10,3 +10,4 @@ library
                 , chapter2
   other-modules:  Chapter4.TypeClasses
                 , Chapter4.Containers
+                , Chapter4.MinimumPrice

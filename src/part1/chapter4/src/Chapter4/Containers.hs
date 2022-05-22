@@ -4,6 +4,7 @@
 module Chapter4.Containers where
 
 import           Chapter3.ParamPoly
+import           Chapter4.TypeClasses
 import           Data.Graph
 import qualified Data.Map           as M
 import qualified Data.Set           as S
