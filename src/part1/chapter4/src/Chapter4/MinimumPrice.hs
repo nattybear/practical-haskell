@@ -89,3 +89,6 @@ instance Semigroup Min where
 instance Monoid Min where
   mempty  = Min infinity where infinity = 1/0
   mappend = (<>)
+
+modifyTravelGuidePrice :: Double -> [TravelGuide] -> [TravelGuide]
+modifyTravelGuidePrice m = map (\tg -> tg { price = m * price tg })
