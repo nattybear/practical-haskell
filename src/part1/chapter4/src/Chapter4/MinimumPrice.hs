@@ -3,7 +3,7 @@ module Chapter4.MinimumPrice where
 data TravelGuide = TravelGuide { title   :: String
                                , authors :: [String]
                                , price   :: Double }
-                 deriving (Show, Eq)
+                 deriving (Show, Eq, Ord)
 
 data BinaryTree1 = Node1 TravelGuide BinaryTree1 BinaryTree1
                  | Leaf1
@@ -45,6 +45,8 @@ concat' :: BinaryTree1 -> BinaryTree1 -> BinaryTree1
 concat' Leaf1         t = t
 concat' (Node1 v l r) t = l `concat'` r `concat'` treeInsert1 v t
 
-instance Ord TravelGuide where
-  (TravelGuide t1 a1 p1) <= (TravelGuide t2 a2 p2) =
+newtype TGByPrice = TGByPrice TravelGuide deriving Eq
+
+instance Ord TGByPrice where
+  (TGByPrice (TravelGuide t1 a1 p1)) <= (TGByPrice (TravelGuide t2 a2 p2)) =
     p1 < p2 || (p1 == p2 && (t1 < t2 || (t1 == t2 && a1 <= a2)))
