@@ -1,5 +1,7 @@
 module Chapter4.MinimumPrice where
 
+import qualified Data.Map as M
+
 data TravelGuide = TravelGuide { title   :: String
                                , authors :: [String]
                                , price   :: Double }
@@ -92,3 +94,7 @@ instance Monoid Min where
 
 modifyTravelGuidePrice :: Double -> [TravelGuide] -> [TravelGuide]
 modifyTravelGuidePrice m = map (\tg -> tg { price = m * price tg })
+
+modifyTravelGuidePriceMap
+  :: Double -> M.Map a TravelGuide -> M.Map a TravelGuide
+modifyTravelGuidePriceMap m = M.map (\tg -> tg { price = m * price tg })
