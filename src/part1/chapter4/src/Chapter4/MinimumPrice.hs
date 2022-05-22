@@ -113,3 +113,7 @@ newtype Maybe' a = Maybe' (Maybe a) deriving Show
 instance Functor Maybe' where
   fmap _ (Maybe' Nothing)  = Maybe' Nothing
   fmap f (Maybe' (Just x)) = Maybe' (Just $ f x)
+
+instance Functor BinaryTree2 where
+  fmap _ Leaf2         = Leaf2
+  fmap f (Node2 v l r) = undefined
