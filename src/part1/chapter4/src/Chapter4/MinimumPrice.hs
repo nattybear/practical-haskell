@@ -28,7 +28,7 @@ treeInsert1 t Leaf1           = Node1 t Leaf1 Leaf1
 
 data BinaryTree2 a = Node2 a (BinaryTree2 a) (BinaryTree2 a)
                    | Leaf2
-                   deriving Show
+                   deriving (Show, Eq, Ord)
 
 treeFind2 :: Ord a => a -> BinaryTree2 a -> Maybe a
 treeFind2 t (Node2 v l r) = case compare t v of
@@ -116,4 +116,4 @@ instance Functor Maybe' where
 
 instance Functor BinaryTree2 where
   fmap _ Leaf2         = Leaf2
-  fmap f (Node2 v l r) = undefined
+  fmap f (Node2 v l r) = Node2 (f v) (fmap f l) (fmap f r)
