@@ -117,3 +117,13 @@ instance Functor Maybe' where
 instance Functor BinaryTree2 where
   fmap _ Leaf2         = Leaf2
   fmap f (Node2 v l r) = Node2 (f v) (fmap f l) (fmap f r)
+
+instance Foldable Maybe' where
+  foldr _ z (Maybe' Nothing)  = z
+  foldr f z (Maybe' (Just x)) = f x z
+
+instance Foldable BinaryTree2 where
+  foldr _ z Leaf2         = z
+  foldr f z (Node2 v l r) = f v z''
+    where z'  = foldr f z l
+          z'' = foldr f z' r
