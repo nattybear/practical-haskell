@@ -1,0 +1,16 @@
+name:             chapter5
+version:          0.1
+build-type:       Simple
+cabal-version:    >= 1.8
+
+library
+  hs-source-dirs: src
+  build-depends:  base >= 4 && < 5
+  other-modules:  Chapter5.Infinite
+                , Chapter5.Problems
+
+executable profiling-example
+  build-depends:  base >= 4
+  hs-source-dirs: src
+  main-is:        Main.hs
+  other-modules:  Chapter5.Annotations
