@@ -1,1 +1,4 @@
-packages: chapter2 chapter4 chapter5
+packages: chapter2
+          chapter4
+          chapter5
+          chapter6
