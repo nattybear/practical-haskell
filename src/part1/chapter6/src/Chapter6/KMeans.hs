@@ -22,8 +22,23 @@ class Vector v => Vectorizable e v where
 instance Vectorizable (Double,Double) (Double,Double) where
   toVector = id
 
-kMeans :: (Vector v, Vectorizable e v) => (Int -> [e] -> [v]) -> [e] -> [v]
-kMeans = undefined
+kMeans :: (Vector v, Vectorizable e v)
+       => (Int -> [e] -> [v])  -- initialization function
+       -> Int                  -- number of centroids
+       -> [e]                  -- the information
+       -> Double               -- threshold
+       -> [v]                  -- final centroids
+kMeans i k points = kMeans' (i k points) points
+
+kMeans' :: (Vector v, Vectorizable e v)
+        => [v] -> [e] -> Double -> [v]
+kMeans' centroids points threshold =
+  let assignments     = clusterAssignmentPhase centroids points
+      oldNewCentroids = newCentroidPhase assignments
+      newCentroids    = map snd oldNewCentroids
+  in  if shouldStop oldNewCentroids threshold
+      then newCentroids
+      else kMeans' newCentroids points threshold
 
 clusterAssignmentPhase :: (Ord v, Vector v, Vectorizable e v)
                        => [v] -> [e] -> M.Map v [e]
