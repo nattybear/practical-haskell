@@ -3,6 +3,9 @@
 
 module Chapter6.KMeans where
 
+import           Data.List
+import qualified Data.Map as M
+
 class Vector v where
   distance :: v -> v -> Double
 
@@ -17,3 +20,13 @@ instance Vectorizable (Double,Double) (Double,Double) where
 
 kMeans :: (Vector v, Vectorizable e v) => (Int -> [e] -> [v]) -> [e] -> [v]
 kMeans = undefined
+
+clusterAssignmentPhase :: (Ord v, Vector v, Vectorizable e v)
+                       => [v] -> [e] -> M.Map v [e]
+clusterAssignmentPhase centroids points =
+  let initialMap = M.fromList $ zip centroids (repeat [])
+  in  foldr (\p m -> let chosenC = minimumBy (compareDistance p) centroids
+                     in  M.adjust (p:) chosenC m)
+            initialMap points
+  where compareDistance p x y = compare (distance x $ toVector p)
+                                        (distance y $ toVector p)
