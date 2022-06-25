@@ -15,5 +15,5 @@ class Vector v => Vectorizable e v where
 instance Vectorizable (Double,Double) (Double,Double) where
   toVector = id
 
-kMeans :: (Vector v, Vectorizable e v) => Int -> [e] -> [v]
+kMeans :: (Vector v, Vectorizable e v) => (Int -> [e] -> [v]) -> [e] -> [v]
 kMeans = undefined
