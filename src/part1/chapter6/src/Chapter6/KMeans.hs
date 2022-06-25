@@ -34,3 +34,6 @@ clusterAssignmentPhase centroids points =
             initialMap points
   where compareDistance p x y = compare (distance x $ toVector p)
                                         (distance y $ toVector p)
+
+newCentroidPhase :: (Vector v, Vectorizable e v) => M.Map v [e] -> [(v,v)]
+newCentroidPhase = M.toList . fmap (centroid . map toVector)
