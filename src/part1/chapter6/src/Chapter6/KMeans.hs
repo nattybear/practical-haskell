@@ -37,3 +37,7 @@ clusterAssignmentPhase centroids points =
 
 newCentroidPhase :: (Vector v, Vectorizable e v) => M.Map v [e] -> [(v,v)]
 newCentroidPhase = M.toList . fmap (centroid . map toVector)
+
+shouldStop :: (Vector v) => [(v,v)] -> Double -> Bool
+shouldStop centroids threshold =
+  foldr (\(x,y) s -> s + distance x y) 0.0 centroids < threshold
