@@ -56,3 +56,8 @@ newCentroidPhase = M.toList . fmap (centroid . map toVector)
 shouldStop :: (Vector v) => [(v,v)] -> Double -> Bool
 shouldStop centroids threshold =
   foldr (\(x,y) s -> s + distance x y) 0.0 centroids < threshold
+
+initializeSimple :: Int -> [e] -> [(Double,Double)]
+initializeSimple 0 _ = []
+initializeSimple n v = (fromIntegral n, fromIntegral n)
+                     : initializeSimple (n-1) v
